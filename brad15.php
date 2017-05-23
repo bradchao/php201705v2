@@ -3,7 +3,7 @@
         $twid = $_GET['twid'];
 
         if (preg_match('/^[A-Z][12][0-9]{8}$/', $twid)>0){
-            
+
             $n12s = substr($twid, 0, 1);
             //echo $n12s;
             $letters = 'ABCDEFGHJKLMNPQRSTUVXYWZIO';
