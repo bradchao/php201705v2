@@ -20,6 +20,7 @@
             "<font color='black' size='5'>&clubs;</font>");
         $value = array('A',2,3,4,5,6,7,8,9,10,'J','Q','K');
         foreach ($player as $sb){
+            sort($sb);
             echo '<tr>';
             foreach ($sb as $card){
                 echo "<td>{$suit[(int)($card/13)]}{$value[$card%13]}</td>";
