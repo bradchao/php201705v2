@@ -32,7 +32,7 @@
             echo "<td>{$type}</td>";
             echo "<td>" . filesize("{$dirname}/{$file}")."</td>";
             echo "<td>" . date('Y-m-d H:i:s',filemtime("{$dirname}/{$file}"))."</td>";
-            echo "<td></td>";
+            echo "<td><a href='?dirname={$dirname}&filename={$file}'>Delete</a></td>";
             echo '</tr>';
         }
     ?>
