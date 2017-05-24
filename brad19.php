@@ -1,8 +1,10 @@
 <?php
+    date_default_timezone_set ("Asia/Taipei" );
     $dirname = ".";
     if (isset($_GET['dirname'])){
         $dirname = $_GET['dirname'];
     }
+    $fp = @opendir($dirname) or exit('Server Down');
 ?>
 <form>
     <input type="text" name="dirname" />
@@ -18,13 +20,18 @@
         <th>Delete</th>
     </tr>
     <?php
-        $fp = opendir($dirname);
         while ($file = readdir($fp)){
             echo '<tr>';
             echo "<td>{$file}</td>";
-            echo "<td></td>";
-            echo "<td></td>";
-            echo "<td></td>";
+            $type = '';
+            if (is_dir("{$dirname}/{$file}")){
+                $type = 'Dir';
+            }else if (is_file("{$dirname}/{$file}")){
+                $type = 'File';
+            }
+            echo "<td>{$type}</td>";
+            echo "<td>" . filesize("{$dirname}/{$file}")."</td>";
+            echo "<td>" . date('Y-m-d H:i:s',filemtime("{$dirname}/{$file}"))."</td>";
             echo "<td></td>";
             echo '</tr>';
         }
