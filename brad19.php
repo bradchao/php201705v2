@@ -3,6 +3,11 @@
     $dirname = ".";
     if (isset($_GET['dirname'])){
         $dirname = $_GET['dirname'];
+        if (isset($_GET['filename'])){
+            // delete
+            $delfile = $_GET['filename'];
+            unlink("{$dirname}/{$delfile}");
+        }
     }
     $fp = @opendir($dirname) or exit('Server Down');
 ?>
@@ -32,7 +37,7 @@
             echo "<td>{$type}</td>";
             echo "<td>" . filesize("{$dirname}/{$file}")."</td>";
             echo "<td>" . date('Y-m-d H:i:s',filemtime("{$dirname}/{$file}"))."</td>";
-            echo "<td><a href='?dirname={$dirname}&filename={$file}'>Delete</a></td>";
+            echo "<td><a href='?dirname={$dirname}&filename={$file}' onclick=\"return confirm('Del ?')\">Delete</a></td>";
             echo '</tr>';
         }
     ?>
