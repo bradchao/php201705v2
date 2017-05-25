@@ -11,6 +11,7 @@
 // 單列註解
 
 echo 'Hello, World<br>';
-echo 'Hello, World'
-
+echo 'Hello, World';
+$v = 012;
+echo $v;
 ?>
