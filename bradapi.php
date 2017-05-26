@@ -1,9 +1,10 @@
 <?php
 class Cart {
-    private $memberId;
+    private $member;
     private $list;
-    function __construct(){
+    function __construct($member){
         $this->list = array();
+        $this->member = $member;
     }
     function addItem($pid, $qty){
         $this->list[$pid] = $qty;
@@ -14,6 +15,9 @@ class Cart {
     }
     function getList(){
         return $this->list;
+    }
+    function getMember(){
+        return $this->member;
     }
 }
 
