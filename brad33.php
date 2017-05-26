@@ -1,18 +1,5 @@
 <?php
-class Bike {
-    private $speed = 0;
-    function upSpeed(){
-        $this->speed =
-            ($this->speed<1)?1:$this->speed*1.2;
-    }
-    function downSpeed(){
-        $this->speed =
-            ($this->speed<1)?0:$this->speed*0.7;
-    }
-    function getSpeed(){
-        return $this->speed;
-    }
-}
+include "bradapi.php";
 
 $myBike = new Bike;
 $urBike = new Bike;
@@ -25,5 +12,10 @@ $urBike->upSpeed();
 
 echo "My Bike = {$myBike->getSpeed()}<br>";
 echo "Ur Bike = {$urBike->getSpeed()}";
+echo '<hr>';
+
+$myScooter = new Scooter();
+$myScooter->upSpeed();
+echo "My Scooter = {$myScooter->getSpeed()}";
 
 
