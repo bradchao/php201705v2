@@ -21,6 +21,7 @@ $rs = $db->query($sql);
         <th>password</th>
         <th>Real Name</th>
         <th>Delete</th>
+        <th>Edit</th>
     </tr>
     <?php
         while ($row = $rs->fetch_object()){
@@ -30,6 +31,7 @@ $rs = $db->query($sql);
             echo "<td>{$row->passwd}</td>";
             echo "<td>{$row->realname}</td>";
             echo "<td><a href='?delid={$row->id}'>Del</td>";
+            echo "<td><a href='editMember.php?editid={$row->id}'>Edit</td>";
             echo '</tr>';
         }
     ?>
