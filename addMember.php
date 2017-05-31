@@ -3,13 +3,14 @@
         $account = $_GET['account'];
         $passwd = $_GET['passwd'];
         $realname = $_GET['realname'];
-        $sql = "insert into member (account,passwd,realname)" .
+        $sql = "insert into member (account,passwd,realname) " .
             "values ('{$account}','{$passwd}','{$realname}')";
-
+        $sql2 = "insert into member (account,passwd) values ('a1','b1');insert into member (account,passwd) values ('c1','d1');";
         $db = @new mysqli('127.0.0.1',
             'root','root','iii');
-        $db->query($sql);
-        header("Location: brad38.php");
+        $db->query($sql2);
+        echo $db->error;
+        //header("Location: brad38.php");
     }
 
 
