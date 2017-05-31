@@ -1,7 +1,9 @@
 <?php
+    session_start();
     if (!isset($_GET['editid'])) header("Location: brad38.php");
 
     $editid = $_GET['editid'];
+    $_SESSION['id'] = $editid;
     $sql = "select * from member where id={$editid}";
     $db = @new mysqli('127.0.0.1',
         'root','root','iii');
@@ -9,7 +11,8 @@
     $editObj = $rs->fetch_object();
 
 ?>
-<form>
+<form action="updateMember.php">
+    <input type="hidden" name="id" value="<?php echo $editObj->id; ?>">
 <table>
     <tr>
         <th>Account</th>
