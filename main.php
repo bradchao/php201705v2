@@ -5,7 +5,7 @@ if (!isset($_SESSION['member'])) header("Location: login.php");
 $memberObj = $_SESSION['member'];
 
 $pdo = new pdo($dsn, $user, $passwd, $opt);
-$sql = "select * from food";
+$sql = "select * from food where addr like '南投%' order by addr desc";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 
