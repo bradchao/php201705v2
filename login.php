@@ -1,6 +1,6 @@
 <?php
     include 'sql.php';
-
+    session_start();
 
     if (isset($_POST['account'])){
         $pdo = new pdo($dsn, $user, $passwd, $opt);
@@ -8,13 +8,19 @@
         $passwd = $_POST['passwd'];
         $sql = "select * from member where account=?";
 
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$account]);
+        ($stmt = $pdo->prepare($sql))->execute([$account]);
         if ($stmt->rowCount()>0){
             $memberObj = $stmt->fetchObject();
-            echo $memberObj->id;
+
+            if (password_verify($passwd, $memberObj->passwd)){
+                $_SESSION['member'] = $memberObj;
+                header("Location: main.php");
+            }else{
+                echo 'X1';
+            }
+
         }else {
-            echo 'XX';
+            echo 'X0';
         }
 
 
