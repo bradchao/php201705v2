@@ -10,10 +10,15 @@
 <body>
 
 <input id='click' type="button" value="click" />
-
+<div id="here"></div>
 <script>
     $("#click").click(function(){
-        alert('OK');
+        $.get("brad51.php", function(data, status){
+            //$("#here").html(status);
+            if (status == 'success'){
+                $("#here").html(data);
+            }
+        });
     });
 </script>
 
